@@ -11,6 +11,8 @@
   "dependencies": {
     "@prisma/client": "^4.14.0",
     "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.6.0",
+    "clx": "^1.0.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "next": "13.3.4",

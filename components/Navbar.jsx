@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Button from "./Button";
 
 const Navbar = () => {
   return (
     <div className="h-20 bg-slate-900 text-green-100 flex items-center">
-      <div className="wrapper flex justify-between">
+      <div className="wrapper flex justify-between items-center">
         <Link href="/" className="font-semibold text-xl">
           Course<span className="text-green-400">Cove</span>
         </Link>
@@ -23,9 +24,12 @@ const Navbar = () => {
         </div>
 
         <div>
-          <Link href="/login" className="hover:text-green-300 duration-300">
-            Sign in
-          </Link>
+          <Button
+            href="/login"
+            placeholder="Sign in"
+            color="secondary"
+            size="default"
+          />
         </div>
       </div>
     </div>

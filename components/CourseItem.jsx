@@ -2,6 +2,7 @@ import { CldImage } from "next-cloudinary";
 import { AiOutlineStar } from "react-icons/ai";
 import { currencyConverter } from "@/utils/currencyConverter";
 import Link from "next/link";
+import Button from "./Button";
 
 const CourseItem = ({ course }) => {
   return (
@@ -58,7 +59,7 @@ const CourseItem = ({ course }) => {
           <p className="text-lg font-semibold">
             {currencyConverter(course.price)}
           </p>
-          <Link href={`/courses/${course.id}`} placeholder="View Details" />
+          <Button href={`/courses/${course.id}`} placeholder="View Details" />
         </div>
       </div>
     </div>
