@@ -49,7 +49,7 @@ const CourseDetails = ({ course }) => {
             Price: {currencyConverter(course.price)}
           </p>
 
-          <Button href="/" placeholder="Enroll Now">
+          <Button href="/" placeholder="Enroll Now" color="primary">
             Enroll Now
           </Button>
         </div>
