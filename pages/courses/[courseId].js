@@ -6,7 +6,7 @@ import { CldImage } from "next-cloudinary";
 const CourseDetails = ({ course }) => {
   return (
     <div className="wrapper my-10 min-h-screen">
-      <div className="w-full h-[32rem] bg-no-repeat bg-cover bg-center">
+      <div className="w-full">
         <CldImage
           src={course.cover}
           alt={course.title}
@@ -20,7 +20,7 @@ const CourseDetails = ({ course }) => {
         />
       </div>
 
-      <div className="mt-[-16rem] md:mt-[-12rem] lg:mt-10 grid lg:grid-cols-2 lg:gap-10 space-y-2 lg:space-y-0">
+      <div className="lg:mt-10 grid lg:grid-cols-2 lg:gap-10 space-y-2 lg:space-y-0">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">{course.title}</h2>
           <p>
@@ -49,7 +49,11 @@ const CourseDetails = ({ course }) => {
             Price: {currencyConverter(course.price)}
           </p>
 
-          <Button href="/" placeholder="Enroll Now" color="primary">
+          <Button
+            href={`/checkout/${course.id}`}
+            placeholder="Enroll Now"
+            color="primary"
+          >
             Enroll Now
           </Button>
         </div>

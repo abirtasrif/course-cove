@@ -12,7 +12,7 @@ const CoursePage = ({ courses }) => {
           architecto. Quod delectus quisquam iure eum, perspiciatis ducimus"
       />
 
-      <div className="mt-10 flex flex-wrap gap-10">
+      <div className="mt-10 container flex flex-wrap gap-10">
         {courses.map((course) => (
           <CourseItem key={course.id} course={course} />
         ))}

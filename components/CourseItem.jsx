@@ -1,18 +1,17 @@
 import { CldImage } from "next-cloudinary";
 import { AiOutlineStar } from "react-icons/ai";
 import { currencyConverter } from "@/utils/currencyConverter";
-import Link from "next/link";
 import Button from "./Button";
 
 const CourseItem = ({ course }) => {
   return (
-    <div className="w-full lg:w-[30rem] shadow-md rounded-md overflow-hidden">
-      <div className="w-full h-[25rem] lg:h-[20rem] overflow-hidden">
+    <div className=" w-full lg:w-[25rem] xl:w-[30rem] shadow-md rounded-md overflow-hidden mx-auto">
+      <div className="w-full h-80 overflow-hidden mx-auto">
         <CldImage
           src={course.cover}
           alt={course.title}
           width={640}
-          height={360}
+          height={400}
           crop="fill"
           gravity="auto"
           sizes="50w"
