@@ -2,6 +2,11 @@ import SectionHeader from "@/components/SectionHeader";
 import { getSingleCourse } from "@/prisma/courses";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
+// STRIPE PROMISE
+const stripePrmise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = ({ course }) => {
   const { data: session } = useSession();
@@ -25,8 +30,29 @@ const Checkout = ({ course }) => {
     }
   }, [session]);
 
+  // CHECKOUT HANDLER
   const handleCheckout = async (e) => {
     e.preventDefault();
+
+    const stripe = await stripePrmise;
+
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items: [course],
+      name: formData.name,
+      email: formData.email,
+      mobile: formData.mobile,
+      address: formData.address,
+      course: formData.courseTitle,
+    });
+
+    // REDIRECT TO THE STRIPE GATEWAY
+    const result = await stripe.redirectToChekout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result.error) {
+      console.log(result.error.message);
+    }
   };
 
   return (
@@ -112,7 +138,7 @@ const Checkout = ({ course }) => {
           </div>
           <div className="form-control flex flex-col gap-2">
             <label htmlFor="price" className="cursor-pointer">
-              Course Price (BDT):
+              Course Price (USD):
             </label>
             <input
               className="outline-none border py-3 px-4 rounded-lg focus:border-green-700 duration-300"
