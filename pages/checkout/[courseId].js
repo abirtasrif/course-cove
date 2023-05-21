@@ -46,7 +46,7 @@ const Checkout = ({ course }) => {
     });
 
     // REDIRECT TO THE STRIPE GATEWAY
-    const result = await stripe.redirectToChekout({
+    const result = await stripe.redirectToCheckout({
       sessionId: checkoutSession.data.id,
     });
 
