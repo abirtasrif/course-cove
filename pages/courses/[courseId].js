@@ -35,22 +35,22 @@ const CourseDetails = ({ course }) => {
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">{course.title}</h2>
           <p>
-            <span className="font-semibold">Instructor:</span>
+            <span className="font-semibold mr-1">Instructor:</span>
             {course.instructor}
           </p>
           <p>
-            <span className="font-semibold">Course Description:</span>
+            <span className="font-semibold mr-1">Course Description:</span>
             {course.description}
           </p>
           <p>
-            <span className="font-semibold">Entrolled Students:</span>
+            <span className="font-semibold mr-1">Entrolled Students:</span>
             {course.students}
           </p>
         </div>
 
         <div className="space-y-2">
           <p>
-            <span className="font-semibold">Course Duration:</span>
+            <span className="font-semibold mr-1">Course Duration:</span>
             {course.duration}
           </p>
           <p>
