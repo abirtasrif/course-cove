@@ -1,4 +1,3 @@
-import "@/preserve.entity.config.json";
 import { buffer } from "micro";
 import prisma from "@/prisma/prisma";
 
@@ -49,16 +48,18 @@ async function webhook(req, res) {
     try {
       event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (error) {
-      console.log(`❌️ WEBHOOK ERROR, ${error.message}`);
+      console.log("❌️ WEBHOOK ERROR", error.message);
+      return res.status(400).send(`WEBHOOK ERROR: ${error.message}`);
     }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
       try {
-        await fullFillOrder(session);
+        await fullfillOrder(session);
       } catch (error) {
-        console.log(`❌️ DB ERROR, ${error.message}`);
+        console.log(`❌️ DB ERROR`, error.message);
+        return res.status(400).send(`DB ERROR: ${error.message}`);
       }
 
       console.log(`🟢️ DATA UPDATED:`, session.id);
