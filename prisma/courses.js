@@ -9,9 +9,9 @@ export const getAllCourses = async () => {
 
 //GET single course
 export const getSingleCourse = async (id) => {
-  const courses = await prisma.course.findUnique({
+  const course = await prisma.course.findUnique({
     where: { id },
   });
 
-  return courses;
+  return course;
 };

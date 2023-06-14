@@ -11,7 +11,7 @@ const SuccessPage = ({ session }) => {
     if (!session) {
       router.replace("/users/login");
     }
-  }, [router, session]);
+  }, [session, router]);
 
   if (!session) {
     return null;
@@ -41,7 +41,7 @@ export const getServerSideProps = async (context) => {
     return {
       redirect: {
         destination: "/users/login",
-        permanent: "true",
+        permanent: true,
       },
     };
   }

@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 // STRIPE PROMISE
-const stripePrmise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = ({ course }) => {
   const { data: session } = useSession();
@@ -34,7 +34,7 @@ const Checkout = ({ course }) => {
   const handleCheckout = async (e) => {
     e.preventDefault();
 
-    const stripe = await stripePrmise;
+    const stripe = await stripePromise;
 
     const checkoutSession = await axios.post("/api/create-checkout-session", {
       items: [course],
@@ -42,7 +42,8 @@ const Checkout = ({ course }) => {
       email: formData.email,
       mobile: formData.mobile,
       address: formData.address,
-      course: formData.courseTitle,
+      courseTitle: formData.courseTitle,
+      courseId: course.id,
     });
 
     // REDIRECT TO THE STRIPE GATEWAY
