@@ -4,7 +4,7 @@ import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const loginPage = ({ session }) => {
+const LoginPage = ({ session }) => {
   const router = useRouter();
 
   const loginWithGoogle = async () => {
@@ -52,7 +52,7 @@ const loginPage = ({ session }) => {
   }
 };
 
-export default loginPage;
+export default LoginPage;
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);
