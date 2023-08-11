@@ -1,5 +1,3 @@
-"use client";
-
 import { buffer } from "micro";
 import prisma from "@/prisma/prisma";
 
