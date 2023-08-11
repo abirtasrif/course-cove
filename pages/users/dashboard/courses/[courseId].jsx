@@ -1,4 +1,4 @@
-import { getCourse } from "@/prisma/courses";
+import { getSingleCourse } from "@/prisma/courses";
 
 const CourseVideos = ({ course }) => {
   return (
@@ -11,7 +11,7 @@ const CourseVideos = ({ course }) => {
 export default CourseVideos;
 
 export const getServerSideProps = async ({ query }) => {
-  const course = await getCourse(query.courseId);
+  const course = await getSingleCourse(query.courseId);
 
   const updatedCourse = {
     ...course,
